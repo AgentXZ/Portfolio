@@ -153,11 +153,13 @@ function openPopup(btn) {
       const parts = item.split('|');
       if (parts.length < 3) return;
       const [type, label, path] = [parts[0].trim(), parts[1].trim(), parts[2].trim()];
-      const comment = parts.length >= 4 ? parts[3].trim() : '';
+      const ac = parts.length >= 5 ? parts[3].trim() : '';
+      const comment = parts.length >= 5 ? parts[4].trim() : (parts.length >= 4 ? parts[3].trim() : '');
       const card = document.createElement('div');
       card.className = 'preuve-card';
 
       let cardContent = '';
+      const acHtml = ac ? `<span class="preuve-ac-badge" style="display:inline-block; margin-left: 0.5rem; font-size:0.75rem; background:rgba(14,165,233,.2); color:var(--accent2); padding:0.1rem 0.5rem; border-radius:12px; font-weight:600; border: 1px solid rgba(14,165,233,.3);"><i class="fas fa-crosshairs" style="font-size:0.65rem;margin-right:0.2rem"></i>${ac}</span>` : '';
 
       if (type === 'link') {
         const isPreviewable = path.includes('github.io');
@@ -170,7 +172,7 @@ function openPopup(btn) {
           <div class="preuve-icon"><i class="fas fa-external-link-alt"></i></div>
           <div class="preuve-info">
             <span class="preuve-label">${label}</span>
-            <span class="preuve-type">Lien externe</span>
+            <div><span class="preuve-type">Lien externe</span>${acHtml}</div>
           </div>
           <a href="${path}" target="_blank" class="preuve-action btn-preuve"><i class="fas fa-arrow-up-right-from-square"></i> Ouvrir</a>
           ${iframeHtml}`;
@@ -179,7 +181,7 @@ function openPopup(btn) {
           <div class="preuve-icon"><i class="fas fa-image"></i></div>
           <div class="preuve-info">
             <span class="preuve-label">${label}</span>
-            <span class="preuve-type">Image</span>
+            <div><span class="preuve-type">Image</span>${acHtml}</div>
           </div>
           <div class="preuve-actions">
             <button class="preuve-action btn-preuve preuve-preview-btn" data-src="${path}"><i class="fas fa-expand"></i> Plein écran</button>
@@ -194,7 +196,7 @@ function openPopup(btn) {
           <div class="preuve-icon"><i class="fas fa-file-code"></i></div>
           <div class="preuve-info">
             <span class="preuve-label">${label}</span>
-            <span class="preuve-type">Code source</span>
+            <div><span class="preuve-type">Code source</span>${acHtml}</div>
           </div>
           <div class="preuve-actions">
             <button class="preuve-action btn-preuve preuve-code-btn" data-src="${path}" data-target="${uid}"><i class="fas fa-code"></i> Voir le code</button>
@@ -220,7 +222,7 @@ function openPopup(btn) {
           <div class="preuve-icon"><i class="fas ${icon}"></i></div>
           <div class="preuve-info">
             <span class="preuve-label">${label}</span>
-            <span class="preuve-type">${ext}</span>
+            <div><span class="preuve-type">${ext}</span>${acHtml}</div>
           </div>
           <a href="${path}" download class="preuve-action btn-preuve"><i class="fas fa-download"></i> Télécharger</a>`;
       }
