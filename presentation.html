@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Présentation | Albin Herbelin – Portfolio R&T</title>
+  <meta name="description" content="Présentation d'Albin Herbelin, étudiant en BUT Réseaux & Télécommunications parcours Cybersécurité à l'IUT de Caen.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="container-navbar">
+    <a href="./index.html#accueil" class="logo">
+      <i class="fas fa-network-wired"></i>
+      <span>Albin Herbelin</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="./index.html">Accueil</a>
+      <a href="./presentation.html" class="nav-active">Présentation</a>
+      <a href="./parcours.html">Parcours</a>
+      <a href="./projets.html">Projets</a>
+      <a href="./bilans.html">Bilans de Compétences</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════
+     HERO MINI – En-tête de page
+════════════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="container page-hero-inner">
+    <a href="./index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour au portfolio</a>
+    <h1><i class="fas fa-user-graduate"></i> Présentation</h1>
+    <p class="page-hero-sub">Mon profil, mon évolution et mon projet d'avenir dans le domaine des réseaux et de la cybersécurité.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     PROFIL
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="pres-card pres-profil">
+      <div class="pres-card-icon"><i class="fas fa-id-badge"></i></div>
+      <h3>Qui suis-je ?</h3>
+      <p>Je m'appelle <strong>Albin Herbelin</strong>, étudiant en <strong>BUT Réseaux &amp; Télécommunications</strong> parcours <strong>Cybersécurité</strong> à l'IUT Grand Ouest Normandie de Caen.</p>
+      <p>Titulaire d'un <strong>Baccalauréat Général</strong> (mention Assez Bien) avec les spécialités <strong>Mathématiques</strong> et <strong>Numérique &amp; Sciences de l'Informatique (NSI)</strong>, je me suis naturellement orienté vers les réseaux et la sécurité informatique — deux domaines qui me passionnent.</p>
+      <p>Curieux et motivé, je m'investis pleinement dans chaque projet pour développer mes compétences techniques et mon esprit d'analyse. Mon objectif : devenir ingénieur en cybersécurité.</p>
+      <div class="pres-tags-row">
+        <span class="pres-tag"><i class="fas fa-shield-halved"></i> Cybersécurité</span>
+        <span class="pres-tag"><i class="fas fa-network-wired"></i> Réseaux</span>
+        <span class="pres-tag"><i class="fas fa-code"></i> Développement</span>
+        <span class="pres-tag"><i class="fab fa-python"></i> Python</span>
+        <span class="pres-tag"><i class="fas fa-terminal"></i> Linux</span>
+        <span class="pres-tag"><i class="fab fa-html5"></i> HTML / CSS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     ÉVOLUTION – Compétences acquises
+════════════════════════════════════════════════════ -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="pres-card pres-evolution">
+      <div class="pres-card-icon"><i class="fas fa-chart-line"></i></div>
+      <h3>Mon évolution au Semestre 1</h3>
+      <p>Le premier semestre m'a permis de construire des bases solides à travers les 6 SAÉ du tronc commun. Voici les principaux acquis que j'ai développés :</p>
+
+      <div class="evo-competences">
+
+        <div class="evo-comp-block">
+          <div class="evo-comp-header">
+            <span class="evo-comp-icon" style="background:rgba(31,111,235,.12);color:var(--accent)"><i class="fas fa-server"></i></span>
+            <h4>Administration réseau</h4>
+          </div>
+          <ul class="evo-comp-list">
+            <li>Adressage IPv4 et sous-réseautage (subnetting)</li>
+            <li>Configuration d'équipements Cisco (switches, routeurs)</li>
+            <li>Documentation d'infrastructure avec schémas Visio (physiques et logiques)</li>
+            <li>Diagnostic réseau : ping, traceroute, commandes show</li>
+          </ul>
+        </div>
+
+        <div class="evo-comp-block">
+          <div class="evo-comp-header">
+            <span class="evo-comp-icon" style="background:rgba(14,165,233,.12);color:var(--accent2)"><i class="fas fa-broadcast-tower"></i></span>
+            <h4>Transmissions &amp; Télécommunications</h4>
+          </div>
+          <ul class="evo-comp-list">
+            <li>Mesures DTF (Distance to Fault) sur câbles cuivre et coaxiaux</li>
+            <li>Détermination de la NVP à partir d'un câble étalon</li>
+            <li>Câblage fibre optique et mesure d'atténuation par photométrie</li>
+            <li>Utilisation d'instruments de mesure : oscilloscope, GBF, photomètre</li>
+          </ul>
+        </div>
+
+        <div class="evo-comp-block">
+          <div class="evo-comp-header">
+            <span class="evo-comp-icon" style="background:rgba(139,92,246,.12);color:var(--rt3)"><i class="fas fa-code"></i></span>
+            <h4>Développement &amp; Programmation</h4>
+          </div>
+          <ul class="evo-comp-list">
+            <li>Programmation Python : fonctions, structures de données, gestion d'erreurs (try/except)</li>
+            <li>Utilisation d'APIs REST (OpenStreetMap) et parsing de données JSON</li>
+            <li>Conversion et export de données en Markdown et HTML</li>
+            <li>Développement web front-end : HTML5, CSS3 avancé (Grid, Flexbox, variables CSS, animations)</li>
+            <li>Responsive design multi-breakpoints (mobile, tablette, desktop)</li>
+          </ul>
+        </div>
+
+        <div class="evo-comp-block">
+          <div class="evo-comp-header">
+            <span class="evo-comp-icon" style="background:rgba(249,115,22,.12);color:var(--cyber)"><i class="fas fa-shield-halved"></i></span>
+            <h4>Cybersécurité &amp; Bonnes pratiques</h4>
+          </div>
+          <ul class="evo-comp-list">
+            <li>Sensibilisation aux menaces : phishing, malwares, ingénierie sociale</li>
+            <li>Bonnes pratiques ANSSI : gestion des mots de passe, mises à jour, sauvegardes</li>
+            <li>Conformité et accessibilité web : W3C, WCAG 2.0 AA</li>
+          </ul>
+        </div>
+
+        <div class="evo-comp-block">
+          <div class="evo-comp-header">
+            <span class="evo-comp-icon" style="background:rgba(16,185,129,.12);color:var(--stage)"><i class="fas fa-users"></i></span>
+            <h4>Gestion de projet &amp; Travail en équipe</h4>
+          </div>
+          <ul class="evo-comp-list">
+            <li>Versioning et déploiement avec Git / GitHub / GitHub Pages</li>
+            <li>Outils de planification : diagramme de Gantt, WBS, Trello</li>
+            <li>Rédaction de rapports techniques et de documentation</li>
+            <li>Travail en binôme et en groupe avec répartition des tâches</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="evo-synthesis">Au global, je montre un <strong>profil orienté développement et cybersécurité</strong> avec des résultats solides en programmation et en web. Les transmissions physiques (calculs NVP, atténuation) sont mon principal axe de progression pour le S2.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     POURSUITE D'ÉTUDES
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="pres-card pres-poursuite">
+      <div class="pres-card-icon"><i class="fas fa-rocket"></i></div>
+      <h3>Mon projet d'avenir</h3>
+      <div class="poursuite-timeline">
+        <div class="poursuite-step active">
+          <div class="poursuite-dot"></div>
+          <div class="poursuite-content">
+            <span class="poursuite-date">2025 – 2027</span>
+            <h4>BUT R&amp;T – Parcours Cybersécurité</h4>
+            <p>Formation actuelle sur 2 ans à l'IUT de Caen. Acquisition des fondamentaux en administration réseau, télécommunications et sécurité des systèmes d'information. L'objectif est de valider mon BUT2 avec un bon dossier pour postuler en école d'ingénieur.</p>
+          </div>
+        </div>
+        <div class="poursuite-step future">
+          <div class="poursuite-dot"></div>
+          <div class="poursuite-content">
+            <span class="poursuite-date">2027 – 2030</span>
+            <h4>École d'ingénieur en Cybersécurité / Réseaux</h4>
+            <p>Après ma deuxième année de BUT, je souhaite intégrer une <strong>école d'ingénieur</strong> spécialisée en cybersécurité ou en réseaux &amp; systèmes d'information. L'objectif est d'approfondir mes compétences techniques (pentest, audit sécurité, architecture réseau avancée) et d'obtenir un diplôme d'ingénieur (Bac+5).</p>
+          </div>
+        </div>
+        <div class="poursuite-step future-goal">
+          <div class="poursuite-dot"></div>
+          <div class="poursuite-content">
+            <span class="poursuite-date">2030+</span>
+            <h4>Ingénieur en Cybersécurité</h4>
+            <p>Mon ambition : exercer en tant qu'ingénieur en cybersécurité, que ce soit dans un SOC (Security Operations Center), en conseil en sécurité, ou en tant que pentester au sein d'une entreprise spécialisée.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="social-links">
+      <a href="https://github.com/AgentXZ" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2025 Albin Herbelin – Portfolio BUT R&amp;T</p>
+  </div>
+</footer>
+
+<script>
+  // Menu toggle mobile
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  }
+</script>
+
+</body>
+</html>

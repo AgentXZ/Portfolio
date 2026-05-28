@@ -1,0 +1,52 @@
+# Rapport (dossier rendre)
+
+## 1. Objectif
+Le dossier `rendre` contient deux scripts principaux :
+- `projet.py` : récupérer les stations de recharge d'une région via Overpass, calculer des statistiques, puis générer un rapport en Markdown et en HTML.
+- `fiche_osm.py` : générer une fiche d'un nœud OpenStreetMap (tags + carte) en Markdown puis en HTML.
+
+## 2. Choix réalisés
+- **API et données**
+	- `fiche_osm.py` utilise l'API OSM (endpoint `node/<id>.json`) pour récupérer un nœud et ses tags.
+	- `projet.py` utilise l'API Overpass (Overpass QL) pour cibler `amenity=charging_station` dans une zone administrative `admin_level=4` (région).
+- **Architecture du code**
+	- Les statistiques sont calculées dans une fonction dédiée `compute_statistics` puis réutilisées pour générer le rapport.
+	- La génération MD→HTML est centralisée dans `md_to_html.py` (CSS embarqué, pas de dépendances web externes).
+- **Carte avec marqueur**
+	- `gen_image.py` assemble une image 3x3 tuiles OSM et ajoute un marqueur (`pin1.png`) afin d'obtenir une carte centrée.
+	- L'image générée `result.jpg` est intégrée dans le Markdown, puis affichée dans l'HTML.
+
+## 3. Difficultés rencontrées
+- **Stabilité Overpass** : timeouts/erreurs ; ajout d'un retry simple (attente 2s jusqu'à succès) dans `get_dataset`.
+- **Résultats vides** : protection contre la division par zéro lors des pourcentages (si `total == 0`).
+- **Affichage de la requête** : mise en forme en bloc multi-ligne dans la partie “Informations Techniques”.
+- **Affichage de la carte en HTML** : il faut que le fichier image référencé existe et ait le bon nom (ici `result.jpg`) dans le même dossier que le HTML.
+
+## 4. État d'avancement
+- `fiche_osm.py` : fonctionnel (génère `node_<id>.md`, `node_<id>.html` et `result.jpg`).
+- `projet.py` : fonctionnel (génère `stations_de_recharge_<region>.md` et `stations_de_recharge_<region>.html`).
+- `md_to_html.py` : conversion fonctionnelle avec un style simple.
+
+## 5. Utilisation (commandes)
+Depuis le dossier `rendre` :
+
+```bash
+python projet.py Normandie
+python fiche_osm.py 5553036408
+python md_to_html.py input.md output.html
+```
+
+Dépendances Python (si nécessaire) :
+
+```bash
+python -m pip install requests markdown pillow
+```
+
+## 6. Fichiers générés
+- Rapport région : `stations_de_recharge_<region>.md` et `stations_de_recharge_<region>.html`
+- Fiche nœud : `node_<id>.md` et `node_<id>.html`
+- Carte : `result.jpg` (créée par `gen_image.py`, utilisée par `fiche_osm.py`)
+
+## 7. Améliorations possibles
+- Ajouter d'autres statistiques (types de paiement détaillés, accessibilité, etc.).
+- Ajouter une gestion d'erreurs plus précise (messages + logs) si besoin.

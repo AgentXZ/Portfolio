@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albin Herbelin | Portfolio R&T</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="container-navbar">
+    <a href="./index.html" class="logo">
+      <i class="fas fa-network-wired"></i>
+      <span>Albin Herbelin</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="./index.html" class="nav-active">Accueil</a>
+      <a href="./presentation.html">Présentation</a>
+      <a href="./parcours.html">Parcours</a>
+      <a href="./projets.html">Projets</a>
+      <a href="./bilans.html">Bilans de Compétences</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════ -->
+<section id="accueil" class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">
+        <i class="fas fa-map-marker-alt"></i>
+        BUT Réseaux &amp; Télécommunications · Parcours Cyber · IUT Caen
+      </p>
+      <h1>Albin Herbelin</h1>
+      <h2>Étudiant en BUT Réseaux &amp; Télécommunications</h2>
+      <p class="hero-desc">
+        Passionné par la cybersécurité, les réseaux et le développement, je construis mes compétences à travers des projets concrets en administration réseau, programmation et sécurisation des systèmes d'information. Ce portfolio retrace mon parcours et les compétences développées au fil des SAÉ.
+      </p>
+      <div class="hero-btns">
+        <a href="./projets.html" class="btn btn-primary"><i class="fas fa-folder-open"></i> Mes Projets</a>
+        <a href="./contact.html" class="btn btn-outline"><i class="fas fa-envelope"></i> Me contacter</a>
+        <a href="./CV.pdf" class="btn btn-outline" target="_blank"><i class="fas fa-file-pdf"></i> Mon CV</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="./styles/photos/pp.png" alt="Photo de profil" class="profile-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="profile-placeholder" style="display:none">
+        <i class="fas fa-user"></i>
+        <span>Votre photo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     NAVIGATION RAPIDE
+════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title"><i class="fas fa-compass"></i> Explorer mon portfolio</h2>
+    <p class="section-sub">Naviguez à travers les différentes sections pour découvrir mon parcours et mes compétences.</p>
+
+    <div class="quick-nav-grid">
+      <a href="./presentation.html" class="quick-nav-card qn-pres">
+        <div class="qn-icon"><i class="fas fa-user-graduate"></i></div>
+        <h3>Présentation</h3>
+        <p>Mon profil, mon évolution et mon projet d'avenir</p>
+        <span class="qn-arrow"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="./parcours.html" class="quick-nav-card qn-parcours">
+        <div class="qn-icon"><i class="fas fa-road"></i></div>
+        <h3>Parcours</h3>
+        <p>Mon parcours académique du brevet au BUT R&amp;T</p>
+        <span class="qn-arrow"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="./projets.html" class="quick-nav-card qn-projets">
+        <div class="qn-icon"><i class="fas fa-tasks"></i></div>
+        <h3>Projets (SAÉ)</h3>
+        <p>Toutes mes SAÉ avec analyses réflexives détaillées</p>
+        <span class="qn-arrow"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="./bilans.html" class="quick-nav-card qn-bilans">
+        <div class="qn-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Bilans de Compétences</h3>
+        <p>Référentiel RT1, RT2, RT3 et synthèses réflexives</p>
+        <span class="qn-arrow"><i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="./contact.html" class="quick-nav-card qn-contact">
+        <div class="qn-icon"><i class="fas fa-paper-plane"></i></div>
+        <h3>Contact</h3>
+        <p>Me contacter par email, LinkedIn ou GitHub</p>
+        <span class="qn-arrow"><i class="fas fa-arrow-right"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/albin-herbelin-88a886366/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/AgentXZ" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:albin.herbelin060707@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>Portfolio BUT R&amp;T · IUT Grand Ouest Normandie · Caen</p>
+    <p style="font-size:.8rem;margin-top:.3rem;opacity:.5">© 2026 Albin Herbelin. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks) menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+</script>
+
+</body>
+</html>

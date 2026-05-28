@@ -1,0 +1,102 @@
+from math import cos, log, tan, radians, pi
+from PIL import Image
+import requests
+import markdown
+import sys
+from md_to_html import convert_md_to_html
+
+def get_node(id: int) -> dict:
+
+    """Récupère les données d'une node de OSM avec son ID."""
+
+    url = f"https://www.openstreetmap.org/api/0.6/node/{id}.json"
+    rep = requests.get(url)
+
+    if rep.status_code == 200:
+        return rep.json()['elements'][0]
+    return None
+
+def node_to_md(data: dict, filename: str) -> None:
+
+    """Transforme une node OSM en un fichier markdown."""
+
+    node = get_node(data)
+    if node is None:
+        return None
+    
+    tags = node.get('tags', {})
+    nom = tags.get('name') or tags.get('amenity', 'SANS NOM')
+
+    z = 16
+    lat = float(node.get('lat'))
+    lon = float(node.get('lon'))
+    x, y = generate_map(lat, lon, z)
+
+    contenu = f"## Nom : {nom}\n\n"
+    contenu += f"Lien OSM: [{nom}](https://www.openstreetmap.org/node/{data})\n\n"
+    contenu += f"Id : {data} \n\n"
+    contenu += f"Latitude : {lat} \n\n"
+    contenu += f"Longitude : {lon} \n"
+    contenu += "### Attributs :\n\n"
+
+    for cle, valeur in tags.items():
+        contenu += f"- **{cle}** : {valeur}\n"
+    
+    contenu += "\n"
+    contenu += f"![Carte](result.jpg)\n\n"
+    
+    with open(filename, "w", encoding="utf-8") as fichier:
+        fichier.write(contenu)
+
+    return filename
+
+def generate_map(lat, lon, z):
+    n = 2 ** z
+    x = (lon + 180.0) / 360.0 * n
+    lat_rad = radians(lat)
+    y = (1.0 - log(tan(lat_rad) + (1 / cos(lat_rad))) / pi) / 2.0 * n
+
+    xtile, ytile = int(x), int(y)
+    big_map = Image.new('RGB', (768, 768))
+
+    for dx in range(-1, 2):
+        for dy in range(-1, 2):
+            url = f"https://tile.openstreetmap.org/{z}/{xtile + dx}/{ytile + dy}.png"
+            resp = requests.get(url, headers={'User-Agent': 'Student/1.0'})
+            if resp.status_code == 200:
+                with open("temp.png", "wb") as f:
+                    f.write(resp.content)
+                tile = Image.open("temp.png").convert('RGB')
+                big_map.paste(tile, ((dx + 1) * 256, (dy + 1) * 256))
+
+    try:
+        marker = Image.open("pin1.png").convert("RGBA").resize((40, 40))
+        mx = int((x - xtile) * 256 + 256 - marker.width / 2)
+        my = int((y - ytile) * 256 + 256 - marker.height)
+        big_map.paste(marker, (mx, my), marker)
+    except:
+        pass
+
+    big_map.save('result.jpg')
+
+    return xtile, ytile
+
+def fiche_osm(id: int) -> None:
+
+    """Fait une fiche OSM en markdown qui est ensuite convertie en HTML."""
+
+    fichier_md = node_to_md(id, f"node_{id}.md")
+    fichier_html = convert_md_to_html(f"node_{id}.md", f"node_{id}.html")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("La commande à utiliser est : python3 projet.py <node_id>")
+        sys.exit(1)
+
+    node_id = int(sys.argv[1])
+
+    fiche_osm(node_id)
+
+
+

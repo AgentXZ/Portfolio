@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours | Albin Herbelin – Portfolio R&T</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container-navbar">
+    <a href="./index.html" class="logo"><i class="fas fa-network-wired"></i><span>Albin Herbelin</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="./index.html">Accueil</a>
+      <a href="./presentation.html">Présentation</a>
+      <a href="./parcours.html" class="nav-active">Parcours</a>
+      <a href="./projets.html">Projets</a>
+      <a href="./bilans.html">Bilans de Compétences</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="container page-hero-inner">
+    <a href="./index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour au portfolio</a>
+    <h1><i class="fas fa-road"></i> Mon Parcours</h1>
+    <p class="page-hero-sub">Mon parcours académique, du collège au BUT Réseaux & Télécommunications.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-date">2025 – 2027</div>
+          <h3>BUT Réseaux &amp; Télécommunications</h3>
+          <p>IUT Grand Ouest Normandie – Caen</p>
+          <ul>
+            <li>Administration systèmes et réseaux</li>
+            <li>Cybersécurité et sécurisation des SI</li>
+            <li>Développement Python / Web</li>
+            <li>Cisco</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-date">2022-2025</div>
+          <h3>Baccalauréat Général</h3>
+          <p>Lycée Rémi Belleau - Nogent le Rotrou</p>
+          <ul>
+            <li>Spécialité : Mathématiques</li>
+            <li>Spécialité : Numérique et Science de l'Informatique</li>
+            <li>Spécialité (1ère) : Science de l'Ingénieur</li>
+            <li>Mention : Assez Bien</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-date">2022-2025</div>
+          <h3>Brevet des Collèges</h3>
+          <p>Collège Jean Monnet - La Loupe</p>
+          <ul>
+            <li>Mention : Très Bien</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/albin-herbelin-88a886366/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/AgentXZ" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:albin.herbelin060707@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>Portfolio BUT R&amp;T · IUT Grand Ouest Normandie · Caen</p>
+    <p style="font-size:.8rem;margin-top:.3rem;opacity:.5">© 2026 Albin Herbelin. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks) menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+</script>
+</body>
+</html>

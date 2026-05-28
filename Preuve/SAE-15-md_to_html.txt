@@ -1,0 +1,79 @@
+import markdown
+import argparse
+
+def convert_md_to_html(fichier_md: str, fichier_html: str):
+    """Convertit un fichier markdown en fichier html avec un style simple."""
+
+    with open(fichier_md, "r", encoding="utf-8") as fichier:
+        contenu = fichier.read()
+
+    code_html = markdown.markdown(contenu)
+
+    css = """
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 24px;
+            margin: 0;
+            background: #f5f5f5;
+            color: #1f2933;
+        }
+        h1 {
+            background-color: #5f6055;
+            color: white;
+            min-height: 60px;
+            padding: 16px 20px;
+            text-align: center;
+            border-radius: 10px;
+            border: 2px solid #333;
+            margin: 0 0 20px 0;
+        }
+        .page {
+            background: #fff;
+            padding: 20px 24px;
+            border-radius: 10px;
+            max-width: 1000px;
+            margin: 0;
+            text-align: left;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        pre {
+            background: #eee;
+            border: 1px solid #999;
+            border-radius: 8px;
+            padding: 12px;
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+        code { font-family: "Courier New", monospace; }
+    </style>
+    """
+
+    html = f"""
+    {css}
+    <div class=\"page\">
+    {code_html}
+    </div>
+    """
+
+    with open(fichier_html, "w", encoding="utf-8") as fichier:
+        fichier.write(html)
+
+    return fichier_html
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Sert à convertir un fichier markdown en ficher html")
+    parser.add_argument("entree", help="Emplacement du fichier markdown à convertir.")
+    parser.add_argument("sortie", help="Emplacement du fichier html à créer.") 
+    args = parser.parse_args()
+    convert_md_to_html(args.entree, args.sortie)

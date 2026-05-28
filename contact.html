@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Albin Herbelin – Portfolio R&T</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container-navbar">
+    <a href="./index.html" class="logo"><i class="fas fa-network-wired"></i><span>Albin Herbelin</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="./index.html">Accueil</a>
+      <a href="./presentation.html">Présentation</a>
+      <a href="./parcours.html">Parcours</a>
+      <a href="./projets.html">Projets</a>
+      <a href="./bilans.html">Bilans de Compétences</a>
+      <a href="./contact.html" class="nav-active">Contact</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="container page-hero-inner">
+    <a href="./index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour au portfolio</a>
+    <h1><i class="fas fa-paper-plane"></i> Contact</h1>
+    <p class="page-hero-sub">N'hésitez pas à me contacter pour toute question ou opportunité.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-wrapper" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+      <div class="contact-info" style="max-width: 600px;">
+        <h3>Me retrouver</h3>
+        <p>Étudiant en BUT Réseaux &amp; Télécommunications à l'IUT de Caen, passionné par la cybersécurité et les réseaux. N'hésitez pas à me contacter pour toute question ou opportunité.</p>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/albin-herbelin-88a886366/" class="contact-link" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+          <a href="https://github.com/AgentXZ" class="contact-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+          <a href="mailto:albin.herbelin060707@email.com" class="contact-link"><i class="fas fa-envelope"></i> albin.herbelin060707@email.com</a>
+          <a href="./CV.pdf" class="contact-link" target="_blank"><i class="fas fa-file-pdf"></i> Télécharger mon CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/albin-herbelin-88a886366/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/AgentXZ" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:albin.herbelin060707@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>Portfolio BUT R&amp;T · IUT Grand Ouest Normandie · Caen</p>
+    <p style="font-size:.8rem;margin-top:.3rem;opacity:.5">© 2026 Albin Herbelin. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks) menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+</script>
+</body>
+</html>

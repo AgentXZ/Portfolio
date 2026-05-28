@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilans de Compétences | Albin Herbelin – Portfolio R&T</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="container-navbar">
+    <a href="./index.html" class="logo"><i class="fas fa-network-wired"></i><span>Albin Herbelin</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="./index.html">Accueil</a>
+      <a href="./presentation.html">Présentation</a>
+      <a href="./parcours.html">Parcours</a>
+      <a href="./projets.html">Projets</a>
+      <a href="./bilans.html" class="nav-active">Bilans de Compétences</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="container page-hero-inner">
+    <a href="./index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour au portfolio</a>
+    <h1><i class="fas fa-chart-bar"></i> Bilan de compétences</h1>
+    <p class="page-hero-sub">Référentiel des compétences du BUT R&amp;T et synthèse de ma progression par semestre.</p>
+  </div>
+</section>
+<section id="bilans" class="section">
+  <div class="container">
+    <h2 class="section-title"><i class="fas fa-chart-bar"></i> Bilan de compétences</h2>
+    <p class="section-sub">Référentiel des compétences du BUT R&amp;T et synthèse de ma progression par semestre.</p>
+
+    <div class="ref-grid">
+      <div class="ref-card ref-rt1">
+        <div class="ref-icon"><i class="fas fa-server"></i></div>
+        <span class="ref-badge">RT1</span>
+        <h3>Administrer les réseaux et l'Internet</h3>
+        <p>Configuration, dépannage, virtualisation et déploiement de services réseaux avancés.</p>
+        <div class="ref-niveaux">
+          <span class="niveau active">N1 ✓</span>
+          <span class="niveau">N2</span>
+        </div>
+      </div>
+      <div class="ref-card ref-rt2">
+        <div class="ref-icon"><i class="fas fa-satellite-dish"></i></div>
+        <span class="ref-badge">RT2</span>
+        <h3>Connecter les entreprises et les usagers</h3>
+        <p>Transmissions, ToIP, accès distant sécurisé et connexions multi-sites.</p>
+        <div class="ref-niveaux">
+          <span class="niveau active">N1 ✓</span>
+          <span class="niveau">N2</span>
+        </div>
+      </div>
+      <div class="ref-card ref-rt3">
+        <div class="ref-icon"><i class="fas fa-code"></i></div>
+        <span class="ref-badge">RT3</span>
+        <h3>Créer des outils et applications pour les R&amp;T</h3>
+        <p>Développement web, scripts, bases de données et automatisation système.</p>
+        <div class="ref-niveaux">
+          <span class="niveau active">N1 ✓</span>
+          <span class="niveau">N2</span>
+        </div>
+      </div>
+      <div class="ref-card ref-cyber">
+        <div class="ref-icon"><i class="fas fa-shield-alt"></i></div>
+        <span class="ref-badge">Cyber</span>
+        <h3>Administrer un système d'information sécurisé</h3>
+        <p>Cybersécurité, vulnérabilités, cryptographie et outils de test de pénétration.</p>
+        <div class="ref-niveaux">
+          <span class="niveau">N1</span>
+          <span class="niveau">N2</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel de compétences techniques -->
+    <h3 class="skills-sub-title">Compétences techniques</h3>
+    <div class="carousel-container">
+      <div class="carousel" id="competences-carousel">
+
+        <div class="skill-card">
+          <img src="photos/htmllogo.png" alt="HTML5" onerror="this.style.display='none'">
+          <div class="skill-icon-fallback"><i class="fab fa-html5"></i></div>
+          <h3>HTML / CSS</h3>
+          <p>Développement web front-end</p>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 80%;"></div>
+            <span>Intermédiaire</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-fallback"><i class="fab fa-js-square"></i></div>
+          <h3>JavaScript</h3>
+          <p>Interactivité web</p>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 60%;"></div>
+            <span>Débutant</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-fallback"><i class="fab fa-python"></i></div>
+          <h3>Python</h3>
+          <p>Scripts &amp; automatisation</p>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 70%;"></div>
+            <span>Intermédiaire</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-fallback"><i class="fab fa-linux"></i></div>
+          <h3>Linux</h3>
+          <p>Administration système</p>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 65%;"></div>
+            <span>Intermédiaire</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-fallback"><i class="fas fa-network-wired"></i></div>
+          <h3>Cisco / Réseaux</h3>
+          <p>Routage, switching, VLANs</p>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 65%;"></div>
+            <span>Intermédiaire</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-fallback"><i class="fas fa-lock"></i></div>
+          <h3>Cybersécurité</h3>
+          <p>Sécurisation SI, pentesting</p>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 50%;"></div>
+            <span>Débutant</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-fallback"><i class="fas fa-database"></i></div>
+          <h3>SQL</h3>
+          <p>Bases de données</p>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 70%;"></div>
+            <span>Intermédiaire</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-fallback"><i class="fas fa-phone-alt"></i></div>
+          <h3>Téléphonie VoIP</h3>
+          <p>ToIP, protocole SIP</p>
+          <div class="skill-level">
+            <div class="level-bar" style="width: 45%;"></div>
+            <span>Débutant</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="tabs-wrapper">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="bilan-s1">Semestre 1</button>
+        <!-- <button class="tab-btn" data-tab="bilan-s2">Semestre 2</button> -->
+      </div>
+
+      <!-- ── BILAN S1 ── -->
+      <div id="bilan-s1" class="tab-pane active">
+        <div class="bilan-block">
+          <div class="bilan-header bilan-rt1">
+            <span class="bilan-badge">RT1</span>
+            <div>
+              <h3>Administrer les réseaux et l'Internet</h3>
+              <small>Niveau 1 – Assister l'administrateur du réseau</small>
+            </div>
+          </div>
+          <div class="bilan-body">
+            <div class="bilan-col">
+              <h4>AC mobilisés</h4>
+              <div class="ac-checklist">
+                <label>AC11.01 – Lois fondamentales de l'électricité</label>
+                <label>AC11.02 – Architecture systèmes numériques</label>
+                <label>AC11.03 – Configurer le réseau local</label>
+                <label>AC11.04 – Systèmes d'exploitation</label>
+                <label>AC11.05 – Identifier dysfonctionnements réseau</label>
+                <label>AC11.06 – Installer un poste client</label>
+              </div>
+            </div>
+            <div class="bilan-col">
+              <h4>Synthèse réflexive</h4>
+              <div class="bilan-reflexif">
+                <div class="bilan-field">
+                  <label>✅ Réussites &amp; points forts</label>
+                  <p>Bonne compréhension de l'adressage IP et du sous-réseautage, acquise lors de la SAÉ 1.2. La SAÉ 1.1 m'a permis de bien intégrer les enjeux de l'hygiène informatique et de la cybersécurité. Maîtrise des outils de documentation réseau (schémas Visio, plan d'adressage). Capacité à configurer des équipements Cisco de base et à utiliser les commandes de diagnostic (ping, traceroute, show).</p>
+                </div>
+                <div class="bilan-field">
+                  <label>⚠️ Difficultés &amp; lacunes</label>
+                  <p>La SAÉ 1.2 révèle des difficultés dans la gestion du temps et la coordination en groupe. Les lois fondamentales de l'électricité (AC11.01) restent à consolider. La syntaxe des commandes Cisco IOS nécessite encore de la pratique régulière.</p>
+                </div>
+                <div class="bilan-field">
+                  <label>🎯 Objectifs pour le S2</label>
+                  <p>Améliorer la gestion du temps et l'organisation en groupe pour progresser en SAÉ collaborative. Approfondir la configuration de routage dynamique. Consolider les bases en électricité.</p>
+                </div>
+                <div class="bilan-field">
+                  <label>🔄 Réinvestissement possible</label>
+                  <p>Ces compétences sont directement mobilisables pour l'installation et la maintenance d'infrastructures LAN en entreprise. La sensibilisation à la cybersécurité (SAÉ 1.1) est applicable immédiatement dans tout environnement professionnel.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bilan-block">
+          <div class="bilan-header bilan-rt2">
+            <span class="bilan-badge">RT2</span>
+            <div>
+              <h3>Connecter les entreprises et les usagers</h3>
+              <small>Niveau 1 – Découvrir les transmissions et la ToIP</small>
+            </div>
+          </div>
+          <div class="bilan-body">
+            <div class="bilan-col">
+              <h4>AC mobilisés</h4>
+              <div class="ac-checklist">
+                <label>AC12.01 – Mesurer et analyser les signaux</label>
+                <label>AC12.02 – Systèmes de transmissions élémentaires</label>
+                <label>AC12.03 – Déployer des supports de transmission</label>
+                <label>AC12.04 – Connecter les systèmes de ToIP</label>
+                <label>AC12.05 – Communiquer avec un tiers</label>
+              </div>
+            </div>
+            <div class="bilan-col">
+              <h4>Synthèse réflexive</h4>
+              <div class="bilan-reflexif">
+                <div class="bilan-field"><label>✅ Réussites</label><p>Maîtrise des manipulations pratiques : mesures DTF, relevés à l'oscilloscope, câblage fibre optique validé par photométrie. La SAÉ 1.4 m'a permis de développer mes capacités de communication à travers le développement du site web BlackJack avec validation W3C et WCAG.</p></div>
+                <div class="bilan-field"><label>⚠️ Difficultés</label><p>La SAÉ 1.3 m'a posé problème : les calculs liés à la NVP, l'atténuation et les formules de propagation ont été difficiles. Le QCM final couvrant l'ensemble de la SAÉ était exigeant. Les concepts mathématiques (modulation, atténuation) restent à approfondir.</p></div>
+                <div class="bilan-field"><label>🎯 Objectifs</label><p>La SAÉ 2.2 au S2 sera l'occasion de rattraper mes lacunes sur les transmissions. Retravailler les formules de propagation et d'atténuation. Découvrir la ToIP (AC12.04) au S2.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bilan-block">
+          <div class="bilan-header bilan-rt3">
+            <span class="bilan-badge">RT3</span>
+            <div>
+              <h3>Créer des outils et applications pour les R&amp;T</h3>
+              <small>Niveau 1 – S'intégrer dans un service informatique</small>
+            </div>
+          </div>
+          <div class="bilan-body">
+            <div class="bilan-col">
+              <h4>AC mobilisés</h4>
+              <div class="ac-checklist">
+                <label>AC13.01 – Utiliser un système informatique</label>
+                <label>AC13.02 – Lire, corriger un programme</label>
+                <label>AC13.03 – Traduire un algorithme</label>
+                <label>AC13.04 – Architecture d'un site Web</label>
+                <label>AC13.05 – Mécanismes de gestion de données</label>
+                <label>AC13.06 – Environnement collaboratif</label>
+              </div>
+            </div>
+            <div class="bilan-col">
+              <h4>Synthèse réflexive</h4>
+              <div class="bilan-reflexif">
+                <div class="bilan-field"><label>✅ Réussites</label><p>Excellente réussite en SAÉ 1.5 : maîtrise du développement Python, utilisation d'APIs REST (OpenStreetMap), conversion Markdown/HTML. Bonne progression en développement web (SAÉ 1.4) : HTML/CSS avancé, responsive design, validation W3C/WCAG, déploiement GitHub Pages. Maîtrise de Git/GitHub (AC13.06). Le portfolio (SAÉ 1.6) a renforcé ma capacité à structurer un projet web complet.</p></div>
+                <div class="bilan-field"><label>⚠️ Difficultés</label><p>La gestion de projet (livrables R1.15 de la SAÉ 1.4 : Gantt, WBS, Trello) était un exercice nouveau. L'algorithmique avancée reste un point à travailler (AC13.03). La gestion de cas particuliers dans les données (SAÉ 1.5) a demandé de la rigueur.</p></div>
+                <div class="bilan-field"><label>🎯 Objectifs</label><p>Approfondir Python (POO, structures de données avancées). Progresser en algorithmique. Découvrir le développement d'applications web dynamiques. Réutiliser l'expérience des APIs REST pour de l'automatisation réseau (SNMP, Zabbix).</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /bilan-s1 -->
+
+      <!-- ── BILAN S2 (Désactivé pour l'instant) ── 
+      <div id="bilan-s2" class="tab-pane">
+        <p class="bilan-todo"><i class="fas fa-info-circle"></i> Dupliquez les blocs du S1, adaptez les niveaux (consolidation N1) et remplissez vos synthèses pour le S2.</p>
+      </div>
+      -->
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/albin-herbelin-88a886366/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/AgentXZ" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:albin.herbelin060707@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>Portfolio BUT R&amp;T · IUT Grand Ouest Normandie · Caen</p>
+    <p style="font-size:.8rem;margin-top:.3rem;opacity:.5">© 2026 Albin Herbelin. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script defer src="./styles/script.js"></script>
+</body>
+</html>

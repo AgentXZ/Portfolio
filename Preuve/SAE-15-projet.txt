@@ -1,0 +1,252 @@
+import requests
+from md_to_html import convert_md_to_html
+import argparse
+import datetime
+import time
+
+
+url = "https://overpass-api.de/api/interpreter"
+region_name = ""
+region_query = ""
+
+def get_dataset(query: str) -> dict:
+    """Interroge l'API d'Overpass et renvoie le JSON sous forme de dictionnaire.
+
+    Arguments:
+        query: Requête Overpass (texte).
+
+    Retour:
+        Dictionnaire correspondant au JSON renvoyé par Overpass.
+        Si le résultat de la requête est None ou si la réponse HTTP n'est pas 200, ça renvoie {"elements": []}.
+    """
+    if query is None:
+        return {"elements": []}
+    
+    while True:
+        try:
+            reponse = requests.get(url, params={"data": query}, timeout=30)
+            if reponse.status_code == 200:
+                return reponse.json()
+        except:
+            pass
+        time.sleep(2)
+
+def compute_statistics(data: dict) -> dict:
+    """Cette fonction calcule des statistiques sur les stations de recharge.
+
+    Arguments:
+        data: Data Overpass (dictionnaire).
+
+    Retour:
+        Un dictionnaire de statistiques contenant des informations sur les stations de recharges.
+    """
+
+    elements = data.get("elements", [])
+    total = len(elements)
+
+    avec_capacite = 0
+    avec_horaires = 0
+    avec_paiement = 0
+    ouvert_h24 = 0
+
+    compteur_operateurs = {}
+    compteur_reseaux = {}
+
+    for element in elements:
+        tags = element.get("tags", {})
+
+        if tags.get("capacity"):
+            avec_capacite += 1
+
+        if tags.get("opening_hours"):
+            avec_horaires += 1
+            if tags.get("opening_hours") == "24/7":
+                ouvert_h24 += 1
+        
+        if tags.get("payment:cards") or tags.get("payment:app"):
+            avec_paiement += 1
+
+        if tags.get("operator"):
+            op = tags.get("operator")
+            compteur_operateurs[op] = compteur_operateurs.get(op, 0) + 1
+
+        if tags.get("network"):
+            net = tags.get("network")
+            compteur_reseaux[net] = compteur_reseaux.get(net, 0) + 1
+
+    operateurs_list = list(compteur_operateurs.items()) 
+    for i in range(len(operateurs_list)): 
+        for j in range(i + 1, len(operateurs_list)):
+            if operateurs_list[j][1] > operateurs_list[i][1]:
+                operateurs_list[i], operateurs_list[j] = operateurs_list[j], operateurs_list[i] # Permet de permuter 
+
+    reseaux_list = list(compteur_reseaux.items())
+    for i in range(len(reseaux_list)):
+        for j in range(i + 1, len(reseaux_list)):
+            if reseaux_list[j][1] > reseaux_list[i][1]:
+                reseaux_list[i], reseaux_list[j] = reseaux_list[j], reseaux_list[i]
+
+    top_operateurs = operateurs_list[:3]
+    top_reseaux = reseaux_list[:3]
+
+    pct_capacite = round(avec_capacite / total * 100, 1) if total > 0 else 0 # sert à ne pas faire d'erreur si la requête overpass bug
+    pct_horaires = round(avec_horaires / total * 100, 1) if total > 0 else 0
+    pct_24h = round(ouvert_h24 / total * 100, 1) if total > 0 else 0
+    pct_paiement = round(avec_paiement / total * 100, 1) if total > 0 else 0
+
+    return {
+        "total": total,
+        "avec_capacite": avec_capacite,
+        "avec_horaires": avec_horaires,
+        "avec_paiement": avec_paiement,
+        "ouvert_24h": ouvert_h24,
+        "top_operateurs": top_operateurs,
+        "top_reseaux": top_reseaux,
+        "pct_capacite": pct_capacite,
+        "pct_horaires": pct_horaires,
+        "pct_24h": pct_24h,
+        "pct_paiement": pct_paiement
+    }
+
+
+def dataset_to_md(dataset: dict, filename: str) -> None :
+    """Cette fonction sert à générer un fichier Markdown à partir d'un dataset Overpass.
+
+    Le fichier contient une partie statistiques via compute_statistics et une partie liste 
+    des stations avec leur titre et la liste de leurs tags sous forme clé, valeur.
+
+    Arguments:
+        dataset: Dataset Overpass (dictionnaire) contenant une clé "elements".
+        filename: Nom/Emplacement du fichier .md à faire.
+
+    Retour:
+        None (écrit un fichier Markdown).
+    """
+
+    global region_name, region_query
+    stats = compute_statistics(dataset)
+    elements = dataset.get("elements", [])
+
+    lines = []
+    lines.append(f"# Stations de recharge - {region_name}")
+    lines.append("")
+    lines.append("## Informations Legales")
+    lines.append(
+        "Les données inclues dans ce document sont issus de "
+        "[www.openstreetmap.org](https://www.openstreetmap.org) "
+        "et sont distribuées sous licence "
+        "[ODbL](https://opendatacommons.org/licenses/odbl/1-0/)."
+    )
+    lines.append("")
+    lines.append("## Informations Techniques")
+    lines.append(f"Date de récupération des données : {datetime.datetime.now()}\n\n")
+    lines.append(f"Générateur de données : {dataset.get('generator', 'inconnu')}\n\n")
+    lines.append("Requête Overpass :")
+    lines.append("")
+    lines.append("    // Set a few options for the query:")
+    lines.append("    [out:json][timeout:25];")
+    lines.append("    // fetch all objects in a given area")
+    lines.append(f"    area[\"name\"=\"{region_name}\"][\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"]->.searchArea;")
+    lines.append("    nwr[\"amenity\"=\"charging_station\"](area.searchArea);")
+    lines.append("    out tags;")
+    lines.append("")
+    lines.append("## Statistiques")
+    lines.append("")
+
+    total = stats["total"]
+    lines.append(f"- Total des stations {total}")
+    lines.append("")
+
+    if total > 0:
+        lines.append("- Avec capacité notée : " + str(stats["avec_capacite"]) + " (" + str(stats["pct_capacite"]) + "%)")
+        lines.append("") 
+
+        lines.append("- Avec horaires notées : " + str(stats["avec_horaires"]) + " (" + str(stats["pct_horaires"]) + "%)")
+        lines.append("") 
+
+        lines.append("- Ouvertes 24h/24 : " + str(stats["ouvert_24h"]) + " (" + str(stats["pct_24h"]) + "%)")
+        lines.append("")
+
+        lines.append("- Avec paiement par carte/application : " + str(stats["avec_paiement"]) + " (" + str(stats["pct_paiement"]) + "%)")
+        lines.append("")
+
+    if stats["top_operateurs"]:
+        lines.append("## Opérateurs")
+        lines.append("")
+
+        for op, nb in stats["top_operateurs"]:
+            pct_op = round(nb / stats["total"] * 100, 1)
+            lines.append(f"- {op} : {str(nb)} ({str(pct_op)}%)")
+            lines.append("")
+
+    if stats["top_reseaux"]:
+        lines.append("## Réseaux")
+        lines.append("")
+
+        for reseau, nb in stats["top_reseaux"]:
+            pct_res = round(nb / stats["total"] * 100, 1)
+            lines.append(f"- {reseau} : {str(nb)} ({str(pct_res)}%)")
+            lines.append("")
+
+    lines.append("")
+    lines.append("## Liste des stations de recharge")
+
+    for element in elements:
+        tags = element.get("tags", {})
+        name = tags.get("name", "SANS NOM")
+
+        element_type = element.get("type")
+        element_id = element.get("id")
+
+        lines.append(f"### {str(name).upper()}")
+        lines.append(f"- Type: {str(element_type)}")
+        lines.append(f"- Id: {str(element_id)}")
+        if len(tags) > 0:
+            for cle, valeur in tags.items():
+                valeur_str = str(valeur)
+                lines.append(f"- {cle}: {valeur_str}")
+        else:
+            lines.append("- (aucun tag)")
+        lines.append("")
+
+
+
+    with open(filename, "w" ,encoding = "utf-8") as fichier:
+        for i in range(0, len(lines)):
+            fichier.write(lines[i])
+            if i < len(lines) - 1:
+                fichier.write("\n")
+
+def infos_locales(nom_region: str) -> None:
+    """Télécharge les stations de recharge d'une région et fait un rapport MD + HTML.
+
+    La requête Overpass cible les objets OSM:
+    - node/way/relation avec amenity=charging_station
+
+    Arguments:
+        nom_region: Nom de la région / ville.
+    """
+    global region_name, region_query
+    region_name = nom_region
+    requete = (
+        "[out:json][timeout:25];\n"
+        f"area[\"name\"=\"{nom_region}\"][\"boundary\"=\"administrative\"][\"admin_level\"=\"4\"]->.searchArea;\n"
+        "nwr[\"amenity\"=\"charging_station\"](area.searchArea);\n"
+        "out tags;\n"
+    )
+    region_query = requete
+
+    donnee = get_dataset(requete)
+    replace_name = nom_region.replace(" ", "_")
+    fichier_md = f"stations_de_recharge_{replace_name}.md"
+    fichier_html = f"stations_de_recharge_{replace_name}.html"
+
+    dataset_to_md(donnee, fichier_md)
+    convert_md_to_html(fichier_md, fichier_html)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Sert à faire des statistiques sur les stations de recharges présentes dans une région et le renvoie avec un fichier md et html.")
+    parser.add_argument("entree", help="Nom de région.") 
+    args = parser.parse_args()
+
+    infos_locales(args.entree)
